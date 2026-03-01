@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { LenisProvider } from "@/components/providers/lenis-provider";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { CustomCursor } from "@/components/layout/custom-cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +24,7 @@ export const metadata: Metadata = {
       "Websites, mobile apps, Chrome extensions, and games. Crafting digital experiences that stand out.",
     url: "https://cheotechstudio.com",
     siteName: "CheoTech Studio",
-    locale: "en_US",
+    locale: "vi_VN",
     type: "website",
   },
   twitter: {
@@ -47,23 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <LenisProvider>
-            <CustomCursor />
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </LenisProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

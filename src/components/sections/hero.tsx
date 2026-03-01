@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export function Hero() {
+  const t = useTranslations("hero");
+  const tCta = useTranslations("heroCta");
+
   return (
     <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-4">
       {/* Subtle animated gradient background */}
@@ -32,8 +36,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        Crafting digital experiences that stand out — websites, mobile apps,
-        Chrome extensions, and games.
+        {t("tagline")}
       </motion.p>
 
       <motion.div
@@ -46,13 +49,13 @@ export function Hero() {
           href="#projects"
           className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-all duration-200 hover:scale-[1.02] hover:opacity-90 active:scale-[0.98]"
         >
-          View projects
+          {tCta("viewProjects")}
         </a>
         <a
           href="#contact"
           className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium transition-all duration-200 hover:scale-[1.02] hover:bg-accent hover:text-accent-foreground active:scale-[0.98]"
         >
-          Get in touch
+          {tCta("getInTouch")}
         </a>
       </motion.div>
     </section>

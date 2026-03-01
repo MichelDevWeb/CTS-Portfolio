@@ -29,19 +29,20 @@ export const PROJECT_TYPES: { value: ProjectType; label: string }[] = [
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Sample Web App",
-    slug: "sample-web-app",
+    title: "HDG Design & Engineering Consultancy",
+    slug: "hdg-consultancy",
     type: "website",
-    shortDescription: "A modern web application built with Next.js and TypeScript.",
+    shortDescription:
+      "A modern, trilingual website for HDG Construction Design Consulting JSC — Vietnamese, English, and Chinese.",
     longDescription:
-      "A full-featured web application demonstrating responsive design, performance optimization, and clean architecture. Built with Next.js, TypeScript, and Tailwind CSS.",
-    image: "/placeholder-project.svg",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
+      "A professional construction and engineering consultancy website built with Next.js 14, Supabase, and Tailwind CSS. Features trilingual support (Vietnamese, English, Chinese Simplified), admin dashboard for projects, posts, team, and inquiries, SEO-optimized with dynamic sitemaps and OpenGraph images, and a mobile-first responsive design.",
+    image: "/images/webs/web-hdgcons.png",
+    tags: ["Next.js", "Supabase", "Tailwind CSS", "next-intl"],
     links: [
-      { label: "Live site", url: "https://example.com" },
-      { label: "Repository", url: "https://github.com" },
+      { label: "Live site", url: "https://hdgcons.com.vn" },
+      // { label: "GitHub", url: "https://github.com/MichelDevWeb/cts-hdg" },
     ],
-    year: 2024,
+    year: 2026,
     featured: true,
   },
   {

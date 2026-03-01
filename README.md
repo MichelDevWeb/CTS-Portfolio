@@ -38,5 +38,5 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Contact (embedded on site)
 
 - **Emails:** contact@cheotechstudio.com, cheotechstudio@gmail.com
-- **Phone:** 0984914420
+- **Phone:** +84 373 167 306
 - **Domain:** cheotechstudio.com

@@ -1,21 +1,27 @@
-import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { projects, getProjectBySlug } from "@/lib/data/projects";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+
+type Props = {
+  params: Promise<{ locale: string; slug: string }>;
+};
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return routing.locales.flatMap((locale) =>
+    projects.map((p) => ({ locale, slug: p.slug }))
+  );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: Props) {
+  const { locale, slug } = await params;
   const project = getProjectBySlug(slug);
-  if (!project) return { title: "Project not found" };
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  if (!project) return { title: t("projectNotFound") };
   return {
     title: `${project.title} | CheoTech Studio`,
     description: project.shortDescription,
@@ -27,14 +33,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default async function ProjectPage({ params }: Props) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+
+  const t = await getTranslations("projectDetail");
 
   return (
     <article className="container mx-auto px-4 py-12 md:py-20">
@@ -43,7 +48,7 @@ export default async function ProjectPage({
         className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to projects
+        {t("backToProjects")}
       </Link>
 
       <header className="mb-8">
@@ -58,12 +63,12 @@ export default async function ProjectPage({
         )}
       </header>
 
-      <div className="relative mb-10 aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
+      <div className="group relative mb-10 aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover"
+          className="object-cover object-top transition-[object-position] duration-1000 ease-out group-hover:object-bottom"
           priority
           sizes="(max-width: 1200px) 100vw, 1200px"
         />
@@ -80,7 +85,9 @@ export default async function ProjectPage({
 
       {project.tags.length > 0 && (
         <div className="mt-8">
-          <h3 className="text-sm font-semibold text-foreground">Tech & tools</h3>
+          <h3 className="text-sm font-semibold text-foreground">
+            {t("techTools")}
+          </h3>
           <div className="mt-2 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span

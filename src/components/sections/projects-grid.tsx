@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   projects,
   PROJECT_TYPES,
@@ -11,6 +11,7 @@ import {
   type Project,
   type ProjectType,
 } from "@/lib/data/projects";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const container = {
@@ -26,7 +27,7 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div variants={item}>
       <Link
@@ -38,7 +39,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover object-top transition-[object-position] duration-1000 ease-out group-hover:object-bottom"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -75,6 +76,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function ProjectsGrid() {
+  const t = useTranslations("projects");
+  const tFilter = useTranslations("projectsFilter");
+  const tRoot = useTranslations();
   const [filter, setFilter] = useState<ProjectType | "all">("all");
   const filtered = filter === "all" ? projects : getProjectsByType(filter);
 
@@ -89,11 +93,10 @@ export function ProjectsGrid() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Projects
+            {t("title")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-            Websites, mobile apps, Chrome extensions, and games — a selection of
-            what we build.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -106,9 +109,9 @@ export function ProjectsGrid() {
           transition={{ duration: 0.4, delay: 0.1 }}
         >
           {[
-            { value: "all" as const, label: "All" },
-            ...PROJECT_TYPES,
-          ].map(({ value, label }) => (
+            { value: "all" as const, key: "all" },
+            ...PROJECT_TYPES.map((p) => ({ value: p.value, key: p.value })),
+          ].map(({ value, key }) => (
             <button
               key={value}
               onClick={() => setFilter(value)}
@@ -120,7 +123,7 @@ export function ProjectsGrid() {
                   : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               )}
             >
-              {label}
+              {tFilter(key)}
             </button>
           ))}
         </motion.div>
@@ -135,19 +138,15 @@ export function ProjectsGrid() {
         >
           <AnimatePresence mode="wait">
             {filtered.length > 0 ? (
-              filtered.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                />
+              filtered.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))
             ) : (
               <motion.p
                 variants={item}
                 className="col-span-full py-12 text-center text-muted-foreground"
               >
-                No projects in this category yet.
+                {tRoot("projectsEmpty")}
               </motion.p>
             )}
           </AnimatePresence>

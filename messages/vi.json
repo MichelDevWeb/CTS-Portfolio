@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "about": "Về chúng tôi",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "tagline": "Tạo nên trải nghiệm số ấn tượng — website, ứng dụng di động, tiện ích Chrome và game."
+  },
+  "heroCta": {
+    "viewProjects": "Xem dự án",
+    "getInTouch": "Liên hệ"
+  },
+  "projects": {
+    "title": "Dự án",
+    "subtitle": "Website, ứng dụng di động, tiện ích Chrome và game — một số sản phẩm chúng tôi xây dựng."
+  },
+  "projectsFilter": {
+    "all": "Tất cả",
+    "website": "Website",
+    "mobile": "Ứng dụng di động",
+    "extension": "Tiện ích Chrome",
+    "game": "Game"
+  },
+  "projectsEmpty": "Chưa có dự án nào trong danh mục này.",
+  "about": {
+    "title": "Về chúng tôi",
+    "p1": "CheoTech Studio xây dựng các sản phẩm số mà mọi người thích sử dụng — từ website responsive, ứng dụng di động đến tiện ích trình duyệt và game. Chúng tôi tập trung vào thiết kế gọn gàng, hiệu suất mượt mà và trải nghiệm người dùng chu đáo.",
+    "p2": "Dù bạn cần một website mới, ứng dụng hay công cụ tùy chỉnh, chúng tôi rất muốn được lắng nghe."
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Có ý tưởng dự án hay muốn chào hỏi? Hãy liên hệ qua email hoặc điện thoại.",
+    "domainLabel": "Tên miền:"
+  },
+  "footer": {
+    "rights": "Đã đăng ký bản quyền."
+  },
+  "projectDetail": {
+    "backToProjects": "Quay lại dự án",
+    "techTools": "Công nghệ & công cụ"
+  },
+  "projectNotFound": {
+    "title": "Không tìm thấy dự án",
+    "description": "Dự án bạn tìm không tồn tại hoặc đã bị xóa.",
+    "back": "Quay lại dự án"
+  },
+  "metadata": {
+    "siteTitle": "CheoTech Studio | Portfolio",
+    "siteDescription": "CheoTech Studio — Website, ứng dụng di động, tiện ích Chrome và game. Tạo nên trải nghiệm số ấn tượng.",
+    "projectsTitle": "Dự án | CheoTech Studio",
+    "projectsDescription": "Xem các dự án của chúng tôi — website, ứng dụng di động, tiện ích Chrome và game.",
+    "projectNotFound": "Không tìm thấy dự án"
+  }
+}

@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export function About() {
+  const t = useTranslations("about");
+
   return (
     <section
       id="about"
@@ -17,17 +20,13 @@ export function About() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            About
+            {t("title")}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            CheoTech Studio builds digital products that people enjoy using —
-            from responsive websites and mobile apps to browser extensions and
-            games. We focus on clean design, smooth performance, and thoughtful
-            user experience.
+            {t("p1")}
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Whether you need a new site, an app, or a custom tool, we’d love to
-            hear from you.
+            {t("p2")}
           </p>
         </motion.div>
       </div>

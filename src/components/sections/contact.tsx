@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Mail, Phone } from "lucide-react";
 
 const contactItems = [
@@ -18,13 +19,15 @@ const contactItems = [
   },
   {
     label: "Phone",
-    value: "0984914420",
-    href: "tel:0984914420",
+    value: "+84 373 167 306",
+    href: "tel:+84373167306",
     icon: Phone,
   },
 ];
 
 export function Contact() {
+  const t = useTranslations("contact");
+
   return (
     <section
       id="contact"
@@ -39,11 +42,10 @@ export function Contact() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Get in touch
+            {t("title")}
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Have a project in mind or want to say hello? Reach out via email or
-            phone.
+            {t("subtitle")}
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
@@ -61,7 +63,7 @@ export function Contact() {
           </div>
 
           <p className="mt-8 text-sm text-muted-foreground">
-            Domain:{" "}
+            {t("domainLabel")}{" "}
             <a
               href="https://cheotechstudio.com"
               className="font-medium text-foreground underline-offset-4 hover:underline"

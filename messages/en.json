@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Crafting digital experiences that stand out — websites, mobile apps, Chrome extensions, and games."
+  },
+  "heroCta": {
+    "viewProjects": "View projects",
+    "getInTouch": "Get in touch"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Websites, mobile apps, Chrome extensions, and games — a selection of what we build."
+  },
+  "projectsFilter": {
+    "all": "All",
+    "website": "Websites",
+    "mobile": "Mobile Apps",
+    "extension": "Chrome Extensions",
+    "game": "Games"
+  },
+  "projectsEmpty": "No projects in this category yet.",
+  "about": {
+    "title": "About",
+    "p1": "CheoTech Studio builds digital products that people enjoy using — from responsive websites and mobile apps to browser extensions and games. We focus on clean design, smooth performance, and thoughtful user experience.",
+    "p2": "Whether you need a new site, an app, or a custom tool, we'd love to hear from you."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Have a project in mind or want to say hello? Reach out via email or phone.",
+    "domainLabel": "Domain:"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "projectDetail": {
+    "backToProjects": "Back to projects",
+    "techTools": "Tech & tools"
+  },
+  "projectNotFound": {
+    "title": "Project not found",
+    "description": "The project you're looking for doesn't exist or has been removed.",
+    "back": "Back to projects"
+  },
+  "metadata": {
+    "siteTitle": "CheoTech Studio | Portfolio",
+    "siteDescription": "CheoTech Studio — Websites, mobile apps, Chrome extensions, and games. Crafting digital experiences that stand out.",
+    "projectsTitle": "Projects | CheoTech Studio",
+    "projectsDescription": "Browse our projects — websites, mobile apps, Chrome extensions, and games.",
+    "projectNotFound": "Project not found"
+  }
+}

@@ -1,18 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#about", label: "About" },
-  { href: "/#contact", label: "Contact" },
-];
+const navKeys = ["home", "projects", "about", "contact"] as const;
 
 export function Header() {
+  const t = useTranslations("nav");
   const pathname = usePathname();
 
   return (
@@ -25,23 +22,25 @@ export function Header() {
           CheoTech Studio
         </Link>
         <nav className="flex items-center gap-6">
-          {navItems.map(({ href, label }) => {
+          {navKeys.map((key) => {
+            const href = key === "home" ? "/" : `/#${key}`;
             const isActive =
-              pathname === href ||
-              (href !== "/" && pathname.startsWith(href));
+              (key === "home" && pathname === "/") ||
+              (key === "projects" && pathname.startsWith("/projects"));
             return (
               <Link
-                key={href}
+                key={key}
                 href={href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
                   isActive ? "text-primary" : "text-muted-foreground"
                 )}
               >
-                {label}
+                {t(key)}
               </Link>
             );
           })}
+          <LanguageSwitcher />
           <ThemeToggle />
         </nav>
       </div>
